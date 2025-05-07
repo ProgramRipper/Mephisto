@@ -22,7 +22,7 @@ from avilla.telegram.protocol import (
     TelegramProtocol,
     TelegramWebhookConfig,
 )
-from pydantic import AnyHttpUrl, BaseModel, ValidationError
+from pydantic import AnyHttpUrl, AnyWebsocketUrl, BaseModel, ValidationError
 from yarl import URL
 
 
@@ -155,7 +155,7 @@ class RedProtocolConfig(ProtocolConfig):
 
 class OneBotV11ProtocolFwdConfig(ProtocolConfig):
     protocol: Literal["onebot_v11_forward"] = "onebot_v11_forward"
-    endpoint: AnyHttpUrl
+    endpoint: AnyWebsocketUrl
     access_token: str | None = None
 
     def to_protocol(self) -> OneBot11Protocol:
